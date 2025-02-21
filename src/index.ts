@@ -17,14 +17,29 @@ export default function ctaBoxPlugin(options: CtaBoxOptions = {}) {
            vite: {
              resolve: {
                alias: {
-                 // Alias for the CTA component
-                 '@starlight/cta-box': new URL('./components/CtaBox.astro', import.meta.url).pathname
+                 // Alias for the CTA component (optional)
+                 '@starlight/cta-box': new URL('./components/CtaBox.astro', import.meta.url).pathname,
+                 // Alias for the auto injection script
+                 '@starlight/cta-auto': new URL('./autoInject.js', import.meta.url).pathname
                }
+             },
+             plugins: [
+               {
+                 name: 'starlight-cta-auto-inject',
+                 transformIndexHtml(html: string) {
+                   // Inject the auto-injection script before the closing body tag
+                   return html.replace('</body>', '<script type="module" src="@starlight/cta-auto"></script></body>');
+                 }
+               }
+             ],
+             define: {
+               __CTA_OPTIONS__: JSON.stringify(config)
              }
            }
          });
       }
     },
+    // Expose the component in case manual usage is desired
     components: {
       CtaBox: new URL('./components/CtaBox.astro', import.meta.url).pathname
     },
