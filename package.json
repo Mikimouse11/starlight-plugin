@@ -1,0 +1,29 @@
+{
+  "name": "astro-starlight-cta-box",
+  "version": "1.0.0",
+  "description": "An Astro Starlight plugin for adding a Call-to-Action (CTA) box to your website.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "astro",
+    "starlight",
+    "plugin",
+    "cta"
+  ],
+  "author": "Risto Rehemägi",
+  "license": "MIT",
+  "peerDependencies": {
+    "astro": ">=1.0.0"
+  },
+  "dependencies": {
+    "@starlight/utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  }
+} 
