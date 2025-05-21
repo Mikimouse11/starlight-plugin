@@ -1,0 +1,31 @@
+---
+// src/components/AuthorProfile.astro
+export interface Props {
+  authorId: string;
+  authors: Record<string, {
+    name: string;
+    avatar: string;
+    bio: string;
+    profileSlug: string;
+  }>;
+}
+
+const { authorId, authors } = Astro.props;
+const author = authors[authorId];
+
+if (!author) {
+  console.warn(`Author with ID "${authorId}" not found.`);
+}
+---
+
+{author && (
+  <div class="author-profile" style="margin-top: 1rem; margin-bottom: 1rem; display: flex; align-items: center; font-family: sans-serif;">
+    <a href={author.profileSlug} style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <img src={author.avatar} alt={author.name} style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;" />
+      <div>
+        <span style="font-weight: bold;">{author.name}</span>
+        <p style="font-size: 0.9em; margin: 0;">{author.bio}</p>
+      </div>
+    </a>
+  </div>
+)}

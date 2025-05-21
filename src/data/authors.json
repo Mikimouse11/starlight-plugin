@@ -1,0 +1,8 @@
+{
+  "johndoe": {
+    "name": "John Doe",
+    "avatar": "/images/authors/johndoe.jpg",
+    "bio": "Tech writer and open-source enthusiast.",
+    "profileSlug": "/authors/johndoe"
+  }
+}

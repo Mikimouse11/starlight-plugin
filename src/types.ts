@@ -1,5 +1,4 @@
-export interface CtaBoxOptions {
-  message?: string;
-  buttonText?: string;
-  buttonLink?: string;
-} 
+// src/types.ts
+export interface StarlightAuthorPluginOptions {
+  authors?: string; // Path to the authors data file
+}

@@ -1,7 +1,7 @@
 {
-  "name": "astro-starlight-cta-box",
+  "name": "starlight-author-plugin",
   "version": "1.0.0",
-  "description": "An Astro Starlight plugin for adding a Call-to-Action (CTA) box to your website.",
+  "description": "A Starlight plugin to display author information and profiles.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -13,7 +13,9 @@
     "astro",
     "starlight",
     "plugin",
-    "cta"
+    "author",
+    "profile",
+    "starlight-plugin"
   ],
   "author": "Risto Rehemägi",
   "license": "MIT",

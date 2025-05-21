@@ -1,0 +1,64 @@
+---
+// src/pages/authors/[slug].astro
+import AuthorProfile from '../../components/AuthorProfile.astro';
+import authorsData from '../../data/authors.json'; // Adjust path as needed
+
+export async function getStaticPaths() {
+  return Object.entries(authorsData).map(([id, author]) => ({
+    params: { slug: author.profileSlug.split('/').pop() }, // Extract slug from profileSlug
+    props: { authorId: id, authors: authorsData },
+  }));
+}
+
+const { authorId, authors } = Astro.props;
+const author = authors[authorId];
+---
+
+<style>
+  .author-page-container {
+    max-width: 70ch;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: sans-serif;
+  }
+  .author-avatar-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .author-name-large {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .author-bio-large {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+  }
+  a {
+    color: #007acc;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+{author ? (
+  <div class="author-page-container">
+    <img src={author.avatar} alt={`${author.name}'s avatar`} class="author-avatar-large" />
+    <h1 class="author-name-large">{author.name}</h1>
+    <p class="author-bio-large">{author.bio}</p>
+    <a href="/">Back to articles</a>
+  </div>
+) : (
+  <div class="author-page-container">
+    <p>Author not found.</p>
+    <a href="/">Back to articles</a>
+  </div>
+)}
