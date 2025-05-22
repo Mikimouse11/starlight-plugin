@@ -22,9 +22,7 @@
   "peerDependencies": {
     "astro": ">=1.0.0"
   },
-  "dependencies": {
-    "@starlight/utils": "^1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "typescript": "^4.0.0"
   }
